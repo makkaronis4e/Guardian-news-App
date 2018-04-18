@@ -1,0 +1,13 @@
+
+<ul>
+  <li *ngFor="let title of titles">
+    <div (click)="GetArticle(title.apiUrl)">
+        <p>
+        {{ title.name }}
+      </p>
+      <p>
+        {{ title.apiUrl }}
+      </p>
+    </div>
+  </li>
+</ul>
