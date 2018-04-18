@@ -1,7 +1,7 @@
-
+<button (click)="refresh()">click me</button>
 <ul>
   <li *ngFor="let title of titles">
-    <div (click)="GetArticle(title.apiUrl)">
+    <div (click)="getArticle(title.apiUrl)">
         <p>
         {{ title.name }}
       </p>

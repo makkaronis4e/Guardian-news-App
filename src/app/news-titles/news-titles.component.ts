@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '../models/title';
 import { Article } from '../models/article';
-import { SearchService } from '../services/news-service.service';
+import { NewsService } from '../services/news-service.service';
 
 @Component({
   selector: 'app-news-titles',
   templateUrl: './news-titles.component.html',
   styleUrls: ['./news-titles.component.css'],
-  providers: [SearchService]
+  providers: [NewsService]
 })
 
 export class NewsTitlesComponent implements OnInit {
@@ -15,21 +15,19 @@ export class NewsTitlesComponent implements OnInit {
   titles: Title[] = [];
   article: Article;
 
-  constructor(private searchService: SearchService) { }
+  constructor(private NewsService: NewsService) { }
 
   ngOnInit() {
-    this.searchService.getTitles().subscribe(data => this.titles = data);
-    this.Refresh();
+    this.NewsService.getTitles().subscribe(data => this.titles = data);
   }
 
-  GetArticle(apiUrl: string) {
-
-    this.searchService.getArticle(apiUrl).subscribe(data => this.article = data);
+  getArticle(apiUrl: string) {
+    this.NewsService.getArticle(apiUrl).subscribe(data => this.article = data);
     console.log(this.article);
-
   }
-
-  Refresh() {
-    this.searchService.getTitles().subscribe(data => this.titles = data);
+  
+  refresh(){
+    this.titles = [];
+    this.NewsService.getTitles().subscribe(data => this.titles = data);
   }
 }

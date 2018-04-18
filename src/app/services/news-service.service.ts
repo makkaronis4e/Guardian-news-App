@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 
 
 @Injectable()
-export class SearchService {
+export class NewsService {
 
   constructor(private http: Http) {
 
@@ -38,6 +38,4 @@ export class SearchService {
 
     });
   }
-
-
 }

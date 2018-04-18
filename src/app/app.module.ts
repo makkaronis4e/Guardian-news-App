@@ -4,7 +4,7 @@ import { HttpModule, Http, Response } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NewsTitlesComponent } from './news-titles/news-titles.component';
-import { SearchService } from './services/news-service.service';
+import { NewsService } from './services/news-service.service';
 
 
 
@@ -17,7 +17,7 @@ import { SearchService } from './services/news-service.service';
     BrowserModule,
     HttpModule
   ],
-  providers: [SearchService],
+  providers: [NewsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
