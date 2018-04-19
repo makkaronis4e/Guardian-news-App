@@ -17,11 +17,6 @@
   }
   
   h2 {
-    color: #b70b39;
-  }
-  
-  
-  h2 {
     font-size: 18px;
     line-height: 34px;
     font-weight: 300;
@@ -30,6 +25,7 @@
     background-color: #fefffa;
     margin: 0;
     cursor: pointer;
+    color: #b70b39;
   }
   
   div {
@@ -60,12 +56,14 @@
     padding-top: 18px;
     border-top: 1px dotted #dce7eb;
   }
+
   li i {
     position: absolute;
     transform: translate(-6px, 0);
     margin-top: 16px;
     right: 0;
   }
+
   li i:before, li i:after {
     content: "";
     position: absolute;
@@ -73,12 +71,15 @@
     width: 3px;
     height: 9px;
   }
+
   li i:before {
     transform: translate(-2px, 0) rotate(45deg);
   }
+
   li i:after {
     transform: translate(2px, 0) rotate(-45deg);
   }
+
   li input[type=checkbox] {
     position: absolute;
     cursor: pointer;
@@ -87,6 +88,7 @@
     z-index: 1;
     opacity: 0;
   }
+
   li input[type=checkbox]:checked ~ div {
     margin-top: 0;
     max-height: 0;
@@ -94,9 +96,11 @@
     font-size: 0;
     transform: translate(0, 50%);
   }
+
   li input[type=checkbox]:checked ~ i:before {
     transform: translate(2px, 0) rotate(45deg);
   }
+  
   li input[type=checkbox]:checked ~ i:after {
     transform: translate(-2px, 0) rotate(-45deg);
   }

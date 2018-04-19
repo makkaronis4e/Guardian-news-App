@@ -6,4 +6,4 @@ export class Pager {
         public totalPages: number,
         public pages: any) {
     }
-  }
+}

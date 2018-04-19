@@ -1,10 +1,10 @@
 <div class="app-wrapper">
   <div class="button" (click)="refresh()">
     <img src="http://www.myiconfinder.com/uploads/iconsets/128-128-76912453c14fc15ed016df244ce34b54.png" width="50" height="50"
-      alt="submit" />
+      alt="refresh" />
   </div>
   <ul>
-    <app-news-block *ngFor="let title of titles; let i = index" [title]=title></app-news-block>
+    <app-news-block *ngFor="let title of titles" [title]=title></app-news-block>
   </ul>
   <div>
     <div class="container">
@@ -16,7 +16,7 @@
           <li [ngClass]="{disabled:pager.currentPage === 1}">
             <a (click)="setPage(pager.currentPage - 1)" class="str-buttons">Previous</a>
           </li>
-          <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-button"> 
+          <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-button">
             <a (click)="setPage(page, pagesAmount)">{{ page }}</a>
           </li>
           <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">

@@ -17,7 +17,7 @@ import { NewsBlockComponent } from './news-block/news-block.component';
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
   ],
   providers: [NewsService],
   bootstrap: [AppComponent]

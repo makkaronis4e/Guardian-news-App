@@ -18,27 +18,27 @@ export class NewsTitlesComponent implements OnInit {
   page: number;
   pagesAmount: number;
   pager: Pager;
-  
 
-  constructor(private NewsService: NewsService) { }
+
+  constructor(private newsService: NewsService) { }
 
   ngOnInit() {
-    this.NewsService.getTitles().subscribe(data => {
+    this.newsService.getTitles().subscribe(data => {
       this.pagesAmount = data[0].pages;
       this.setPage(2, this.pagesAmount);
     });
   }
 
-  refresh() {
-    this.NewsService.getTitles(this.pager.currentPage).subscribe(data => this.titles = data);
+  refresh(): void {
+    this.newsService.getTitles(this.pager.currentPage).subscribe(data => this.titles = data);
   }
-  
-  setPage(page: number, pageAmount:number) {
+
+  setPage(page: number, pageAmount: number) {
     if (page < 1 || page > this.pagesAmount) {
-        return;
+      return;
     }
-    this.pager = this.NewsService.getPager(page, pageAmount);
+    this.pager = this.newsService.getPager(page, pageAmount);
     console.log(this.pager);
-    this.NewsService.getTitles(page).subscribe(data => this.titles = data);
+    this.newsService.getTitles(page).subscribe(data => this.titles = data);
   }
 }
