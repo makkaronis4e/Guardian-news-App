@@ -1,7 +1,7 @@
-  <li>
-    <input (click)="getArticle(title.apiUrl)" type="checkbox" checked>
+  <li (click)="getArticle(title.apiUrl)">
+    <input type="checkbox" checked>
     <i></i>
     <h2>{{ title.name }}</h2>
-    <div>435353<a href="webUrl">Load more</a></div>
+    <div *ngIf="article"><p class="block">{{ article.text }}</p><a [href]=article.webUrl>Read full news</a></div>
   </li>
 
