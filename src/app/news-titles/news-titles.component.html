@@ -1,11 +1,7 @@
-<button (click)="refresh()">click me</button>
-
+<button (click)="refresh()">
+    <img src="http://www.myiconfinder.com/uploads/iconsets/128-128-76912453c14fc15ed016df244ce34b54.png" width="50" height="50" alt="submit" />
+</button>
 <h1>News</h1>
 <ul>
-  <li *ngFor="let title of titles; let i = index">
-    <input type="checkbox" checked>
-    <i></i>
-    <h2>{{ title.name }}</h2>
-    <p>test</p>
-  </li>
+  <app-news-block *ngFor="let title of titles; let i = index" [title]=title></app-news-block>
 </ul>
