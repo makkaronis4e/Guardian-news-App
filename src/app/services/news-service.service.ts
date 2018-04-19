@@ -39,7 +39,7 @@ export class NewsService {
     });
   }
 
-  getPager(currentPage: number = 2, pageAmount: number)  {
+  getPager(currentPage: number, pageAmount: number)  {
 
     function createArray(first: number =6) {
       let arr:any = [];
@@ -49,7 +49,7 @@ export class NewsService {
      return arr;
     }
 
-    let totalPages: number = pageAmount;
+    const totalPages: number = pageAmount;
     let startPage: number, endPage: number;
     let pages:any = [];
     if (totalPages <= 10) {
@@ -72,7 +72,6 @@ export class NewsService {
         }
     }
 
-    console.log(pages);
     return {
         currentPage: currentPage,
         startPage: startPage,
