@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule, Http, Response } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NewsTitlesComponent } from './news-titles/news-titles.component';
@@ -18,6 +19,7 @@ import { NewsBlockComponent } from './news-block/news-block.component';
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule
   ],
   providers: [NewsService],
   bootstrap: [AppComponent]

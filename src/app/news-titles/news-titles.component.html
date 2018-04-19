@@ -6,26 +6,29 @@
   <ul>
     <app-news-block *ngFor="let title of titles" [title]=title></app-news-block>
   </ul>
-  <div>
-    <div class="container">
-      <div class="text-center">
-        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-          <li [ngClass]="{disabled:pager.currentPage === 1}">
-            <a (click)="setPage(1)" class="str-buttons">First</a>
-          </li>
-          <li [ngClass]="{disabled:pager.currentPage === 1}">
-            <a (click)="setPage(pager.currentPage - 1)" class="str-buttons">Previous</a>
-          </li>
-          <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-button">
-            <a (click)="setPage(page, pagesAmount)">{{ page }}</a>
-          </li>
-          <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-            <a (click)="setPage(pager.currentPage + 1)" class="str-buttons">Next</a>
-          </li>
-          <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-            <a (click)="setPage(pagesAmount, pagesAmount)" class="str-buttons">Last</a>
-          </li>
-        </ul>
+  <div class="container">
+    <div class="text-center">
+      <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(1)" class="str-buttons">First</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(pager.currentPage - 1)" class="str-buttons">Previous</a>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-button">
+          <a (click)="setPage(page, pagesAmount)">{{ page }}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.currentPage + 1)" class="str-buttons">Next</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pagesAmount, pagesAmount)" class="str-buttons">Last</a>
+        </li>
+      </ul>
+      <div class="input">
+        <label for="input">Page&nbsp;
+          <input name="input" id="input-page" type="number" min="1" max="pageAmount" [ngModel]="value" (ngModelChange)="value = $event; setPage($event, pagesAmount)"
+          /> &nbsp;of {{ pagesAmount }} </label>
       </div>
     </div>
   </div>

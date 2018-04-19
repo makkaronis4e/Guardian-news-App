@@ -1,4 +1,3 @@
-
 .button {
   position: relative;
   height: 60px;
@@ -42,6 +41,7 @@ ul {
   width: 600px;
   margin: 0 auto;
   padding: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .pagination {
@@ -56,6 +56,7 @@ ul > li {
   margin-left: 5px;
   border-radius: 4px;
 }
+
 ul > li:hover {
   background: #d8e6e8;
 }
@@ -65,10 +66,26 @@ ul > li > a {
   margin: auto;
   cursor: pointer;
   font-size: 18px;
-
 }
 
 .active {
   color: #b70b39;
   background-color: wheat;
+}
+
+.input {
+  width: 220px;
+  margin: auto;
+  margin-top: 10px;
+  font-size: 18px;
+  
+}
+
+input, textarea {
+  margin: auto;
+  width: 80px;
+  height: 28px;
+  font-size: 18px;
+  background-color: #fefffa;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }

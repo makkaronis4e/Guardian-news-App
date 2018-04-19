@@ -34,11 +34,16 @@ export class NewsTitlesComponent implements OnInit {
   }
 
   setPage(page: number, pageAmount: number) {
+    let input: any = document.getElementById("input-page");
+    input.value = page
+    console.log('-------', input);
     if (page < 1 || page > this.pagesAmount) {
       return;
     }
+
     this.pager = this.newsService.getPager(page, pageAmount);
     console.log(this.pager);
     this.newsService.getTitles(page).subscribe(data => this.titles = data);
+    ;
   }
 }
