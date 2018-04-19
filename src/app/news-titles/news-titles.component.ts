@@ -4,6 +4,7 @@ import { Article } from '../models/article';
 import { Pager } from '../models/pager';
 import { NewsService } from '../services/news-service.service';
 
+
 @Component({
   selector: 'app-news-titles',
   templateUrl: './news-titles.component.html',
@@ -17,6 +18,8 @@ export class NewsTitlesComponent implements OnInit {
   article: Article;
   page: number;
   pagesAmount: number;
+
+  //object returned by getPage
   pager: Pager;
 
 
@@ -25,18 +28,17 @@ export class NewsTitlesComponent implements OnInit {
   ngOnInit() {
     this.newsService.getTitles().subscribe(data => {
       this.pagesAmount = data[0].pages;
-      this.setPage(2, this.pagesAmount);
+      this.setPage(1, this.pagesAmount);
     });
   }
 
+  //refresh list of titles
   refresh(): void {
     this.newsService.getTitles(this.pager.currentPage).subscribe(data => this.titles = data);
   }
 
+  //create pagination
   setPage(page: number, pageAmount: number) {
-    let input: any = document.getElementById("input-page");
-    input.value = page
-    console.log('-------', input);
     if (page < 1 || page > this.pagesAmount) {
       return;
     }
@@ -44,6 +46,10 @@ export class NewsTitlesComponent implements OnInit {
     this.pager = this.newsService.getPager(page, pageAmount);
     console.log(this.pager);
     this.newsService.getTitles(page).subscribe(data => this.titles = data);
-    ;
+    
+    //get input field and set value for it
+    const input: any = document.getElementById('input-page');
+    console.log(input);
+    input.value = page;
   }
 }

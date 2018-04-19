@@ -7,18 +7,16 @@ import { Title } from '../models/title';
 import { Article } from '../models/article';
 
 
-
-
-
 @Injectable()
 export class NewsService {
 
   constructor(private http: Http) {
   }
 
+  //send request to Guardian api for news titles
   getTitles(page: number = 2): Observable<Title[]> {
     const apiURL = `http://content.guardianapis.com/search?page=${page}&api-key=test`;
-    
+
     return this.http.get(apiURL).map(res => {
       const rest = res.json().response;
       const results = rest.results;
@@ -29,9 +27,10 @@ export class NewsService {
     });
   }
 
+  //send request to Guardian api for text of news
   getArticle(apiUrl: string): Observable<Article> {
     const url = apiUrl + '?show-blocks=body&api-key=test';
-    
+
     return this.http.get(url).map(res => {
       const response = res.json().response.content;
       const webUrl = response.webUrl;
@@ -40,8 +39,10 @@ export class NewsService {
     });
   }
 
+   //create pagination
   getPager(currentPage: number, pageAmount: number) {
 
+    //reduce number of pages and create array of page-numbers
     function createArray(first: number = 6) {
       const arr: any = [];
       for (let i = first - 5, k = 0; k < 10; k++ , i++) {

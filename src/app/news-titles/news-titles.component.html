@@ -27,7 +27,7 @@
       </ul>
       <div class="input">
         <label for="input">Page&nbsp;
-          <input name="input" id="input-page" type="number" min="1" max="pageAmount" [ngModel]="value" (ngModelChange)="value = $event; setPage($event, pagesAmount)"
+          <input name="input" id="input-page" type="number" min="1" [max]="pagesAmount" [(ngModel)]="value" (ngModelChange)="value = $event; setPage($event, pagesAmount)"
           /> &nbsp;of {{ pagesAmount }} </label>
       </div>
     </div>
