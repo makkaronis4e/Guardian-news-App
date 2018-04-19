@@ -1,0 +1,9 @@
+<li (click)="getArticle(title.apiUrl)">
+  <input type="checkbox" checked>
+  <i></i>
+  <h2>{{ title.name }}</h2>
+  <div *ngIf="article">
+    <p class="block">{{ article.text }}</p>
+    <a [href]=article.webUrl>Read full news</a>
+  </div>
+</li>

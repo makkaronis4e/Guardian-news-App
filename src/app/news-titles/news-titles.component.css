@@ -1,0 +1,91 @@
+.button {
+  position: relative;
+  height: 60px;
+  width: 120px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: wheat;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.button:hover {
+  background: #d8e6e8;
+  text-decoration: none;
+}
+
+.button:active {
+	position: relative;
+	top: 2px;
+}
+
+.button:hover img {
+  transition-duration: 1s;
+  transform: rotate(280deg);
+}
+
+img {
+  position:absolute;
+  left: 35px;
+  top: 4px;
+}
+
+ul {
+  list-style: none;
+  perspective: 900;
+  padding: 0;
+  margin: 0;
+}
+.container {
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.pagination {
+  text-align: center;
+}
+
+ul > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+  border: 1px solid rgb(92, 89, 89);
+  margin-left: 5px;
+  border-radius: 4px;
+}
+
+ul > li:hover {
+  background: #d8e6e8;
+}
+
+ul > li > a {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.active {
+  color: #b70b39;
+  background-color: wheat;
+}
+
+.input {
+  width: 220px;
+  margin: auto;
+  margin-top: 10px;
+  font-size: 18px;
+  
+}
+
+input, textarea {
+  margin: auto;
+  width: 80px;
+  height: 28px;
+  font-size: 18px;
+  background-color: #fefffa;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
