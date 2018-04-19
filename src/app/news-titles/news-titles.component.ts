@@ -24,14 +24,13 @@ export class NewsTitlesComponent implements OnInit {
 
   ngOnInit() {
     this.NewsService.getTitles().subscribe(data => {
-      this.titles = data;
       this.pagesAmount = data[0].pages;
       this.setPage(2, this.pagesAmount);
     });
   }
 
   refresh() {
-    this.NewsService.getTitles(this.page).subscribe(data => this.titles = data);
+    this.NewsService.getTitles(this.pager.currentPage).subscribe(data => this.titles = data);
   }
   
   setPage(page: number, pageAmount:number) {
@@ -40,5 +39,6 @@ export class NewsTitlesComponent implements OnInit {
     }
     this.pager = this.NewsService.getPager(page, pageAmount);
     console.log(this.pager);
+    this.NewsService.getTitles(page).subscribe(data => this.titles = data);
   }
 }
