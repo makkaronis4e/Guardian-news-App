@@ -32,7 +32,6 @@ export class NewsTitlesComponent implements OnInit {
 
   refresh() {
     this.NewsService.getTitles(this.page).subscribe(data => this.titles = data);
-    console.log(this.pager)
   }
   
   setPage(page: number, pageAmount:number) {

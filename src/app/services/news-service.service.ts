@@ -4,7 +4,6 @@ import { HttpModule, Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Title } from '../models/title';
 import { Article } from '../models/article';
-import { Pager } from '../models/pager';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -40,7 +39,7 @@ export class NewsService {
     });
   }
 
-  getPager(currentPage: number = 2, pageAmount: number): Observable<Pager>  {
+  getPager(currentPage: number = 2, pageAmount: number)  {
 
     function createArray(first: number =6) {
       let arr:any = [];
