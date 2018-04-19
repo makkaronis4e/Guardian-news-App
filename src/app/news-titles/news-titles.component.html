@@ -1,8 +1,33 @@
 <div class="app-wrapper">
-<div class="button" (click)="refresh()">
-    <img src="http://www.myiconfinder.com/uploads/iconsets/128-128-76912453c14fc15ed016df244ce34b54.png" width="50" height="50" alt="submit" />
-</div>
-<ul>
-  <app-news-block *ngFor="let title of titles; let i = index" [title]=title></app-news-block>
-</ul>
+  <div class="button" (click)="refresh()">
+    <img src="http://www.myiconfinder.com/uploads/iconsets/128-128-76912453c14fc15ed016df244ce34b54.png" width="50" height="50"
+      alt="submit" />
+  </div>
+  <ul>
+    <app-news-block *ngFor="let title of titles; let i = index" [title]=title></app-news-block>
+  </ul>
+  <div>
+    <div class="container">
+      <div class="text-center">
+        <!-- pager -->
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+          <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(1)">First</a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+          </li>
+          <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a (click)="setPage(page)">{{ page }}</a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.currentPage + 1)">Next</a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.totalPages)">Last</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

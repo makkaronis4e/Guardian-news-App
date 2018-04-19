@@ -1,10 +1,12 @@
 import { NgModule, Component, Injectable } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 import { Title } from '../models/title';
 import { Article } from '../models/article';
+import { Pager } from '../models/pager';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+
 
 
 @Injectable()
@@ -20,7 +22,6 @@ export class NewsService {
     return this.http.get(apiURL).map(res => {
      
       const rest = res.json().response;
-      console.log(rest);
       const results = rest.results;
       return results.map(function (title: any) {
         const pages = rest.pages;
@@ -39,30 +40,46 @@ export class NewsService {
     });
   }
 
-  getPager(pageNumber: number, currentPage: number = 2) {
+  getPager(currentPage: number = 2, pageAmount: number): Observable<Pager>  {
 
+    function createArray(first: number =6) {
+      let arr:any = [];
+      for (let i = first-5, k = 0; k<10; k++, i++) {
+        arr.push(i);
+     }
+     return arr;
+    }
+
+    let totalPages: number = pageAmount;
     let startPage: number, endPage: number;
-    if (pageNumber <= 10) {
+    let pages:any = [];
+    if (totalPages <= 10) {
         startPage = 1;
-        endPage = pageNumber;
+        endPage = totalPages;
+        pages = createArray(); 
     } else {
         if (currentPage <= 6) {
             startPage = 1;
             endPage = 10;
-        } else if (currentPage + 4 >= pageNumber) {
-            startPage = pageNumber - 9;
-            endPage = pageNumber;
+            pages = createArray(); 
+        } else if (currentPage + 4 >= totalPages) {
+            startPage = totalPages - 9;
+            endPage = totalPages;
+            pages = createArray(currentPage-4); 
         } else {
             startPage = currentPage - 5;
             endPage = currentPage + 4;
+            pages = createArray(currentPage); 
         }
     }
 
+    console.log(pages);
     return {
         currentPage: currentPage,
-        pageNumber: pageNumber,
         startPage: startPage,
         endPage: endPage,
+        totalPages: totalPages,
+        pages: pages
     };
   }
 }
