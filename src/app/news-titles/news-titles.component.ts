@@ -14,15 +14,21 @@ export class NewsTitlesComponent implements OnInit {
 
   titles: Title[] = [];
   article: Article;
+  page: number;
+  pageAmount: number;
+  
 
   constructor(private NewsService: NewsService) { }
 
   ngOnInit() {
-    this.NewsService.getTitles().subscribe(data => this.titles = data);
+    this.NewsService.getTitles().subscribe(data => {
+      this.titles = data;
+      this.page = 5;
+      this.pageAmount = data[0].pages;
+    });
   }
 
   refresh() {
-    this.titles = [];
-    this.NewsService.getTitles().subscribe(data => this.titles = data);
+    this.NewsService.getTitles(this.page).subscribe(data => this.titles = data);
   }
 }

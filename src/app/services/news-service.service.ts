@@ -11,21 +11,23 @@ import 'rxjs/add/operator/map';
 export class NewsService {
 
   constructor(private http: Http) {
-
   }
 
-  getTitles(): Observable<Title[]> {
+  getTitles(page:number = 2): Observable<Title[]> {
 
-    const apiURL = `http://content.guardianapis.com/search?api-key=test`;
+    const apiURL = `http://content.guardianapis.com/search?page=${page}&api-key=test`;
 
     return this.http.get(apiURL).map(res => {
-      const results = res.json().response.results;
+     
+      const rest = res.json().response;
+      console.log(rest);
+      const results = rest.results;
       return results.map(function (title: any) {
-        return { name: title.webTitle, apiUrl: title.apiUrl };
+        const pages = rest.pages;
+        return { name: title.webTitle, apiUrl: title.apiUrl, pages: pages};
       });
     });
   }
-
 
   getArticle(apiUrl: string): Observable<Article> {
     const url = apiUrl + '?show-blocks=body&api-key=test';
@@ -33,9 +35,34 @@ export class NewsService {
       const response = res.json().response.content;
       const webUrl = response.webUrl;
       const text = response.blocks.body[0].bodyTextSummary;
-
       return { text: text, webUrl: webUrl };
-
     });
+  }
+
+  getPager(pageNumber: number, currentPage: number = 2) {
+
+    let startPage: number, endPage: number;
+    if (pageNumber <= 10) {
+        startPage = 1;
+        endPage = pageNumber;
+    } else {
+        if (currentPage <= 6) {
+            startPage = 1;
+            endPage = 10;
+        } else if (currentPage + 4 >= pageNumber) {
+            startPage = pageNumber - 9;
+            endPage = pageNumber;
+        } else {
+            startPage = currentPage - 5;
+            endPage = currentPage + 4;
+        }
+    }
+
+    return {
+        currentPage: currentPage,
+        pageNumber: pageNumber,
+        startPage: startPage,
+        endPage: endPage,
+    };
   }
 }
