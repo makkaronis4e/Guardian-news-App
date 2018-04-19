@@ -1,13 +1,11 @@
 <button (click)="refresh()">click me</button>
+
+<h1>News</h1>
 <ul>
-  <li *ngFor="let title of titles">
-    <div (click)="getArticle(title.apiUrl)">
-        <p>
-        {{ title.name }}
-      </p>
-      <p>
-        {{ title.apiUrl }}
-      </p>
-    </div>
+  <li *ngFor="let title of titles; let i = index">
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>{{ title.name }}</h2>
+    <p>test</p>
   </li>
 </ul>

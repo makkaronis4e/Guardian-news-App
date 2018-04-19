@@ -25,8 +25,8 @@ export class NewsTitlesComponent implements OnInit {
     this.NewsService.getArticle(apiUrl).subscribe(data => this.article = data);
     console.log(this.article);
   }
-  
-  refresh(){
+
+  refresh() {
     this.titles = [];
     this.NewsService.getTitles().subscribe(data => this.titles = data);
   }
