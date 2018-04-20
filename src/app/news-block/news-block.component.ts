@@ -21,7 +21,7 @@ export class NewsBlockComponent implements OnInit {
   ngOnInit() {
   }
 
-  //load article text "onclick"
+  // load article text "onclick"
   getArticle(apiUrl: string) {
     this.newsService.getArticle(apiUrl).subscribe(data => this.article = data);
   }

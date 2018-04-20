@@ -13,7 +13,7 @@ export class NewsService {
   constructor(private http: Http) {
   }
 
-  //send request to Guardian api for news titles
+  // send request to Guardian api for news titles
   getTitles(page: number = 2): Observable<Title[]> {
     const apiURL = `http://content.guardianapis.com/search?page=${page}&api-key=test`;
 
@@ -27,7 +27,7 @@ export class NewsService {
     });
   }
 
-  //send request to Guardian api for text of news
+  // send request to Guardian api for text of news
   getArticle(apiUrl: string): Observable<Article> {
     const url = apiUrl + '?show-blocks=body&api-key=test';
 
@@ -39,10 +39,10 @@ export class NewsService {
     });
   }
 
-   //create pagination
+   // create pagination
   getPager(currentPage: number, pageAmount: number) {
 
-    //reduce number of pages and create array of page-numbers
+    // reduce number of pages and create array of page-numbers
     function createArray(first: number = 6) {
       const arr: any = [];
       for (let i = first - 5, k = 0; k < 10; k++ , i++) {

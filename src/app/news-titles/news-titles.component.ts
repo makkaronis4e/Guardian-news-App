@@ -19,7 +19,7 @@ export class NewsTitlesComponent implements OnInit {
   page: number;
   pagesAmount: number;
 
-  //object returned by getPage
+  // object returned by getPage
   pager: Pager;
 
 
@@ -32,12 +32,12 @@ export class NewsTitlesComponent implements OnInit {
     });
   }
 
-  //refresh list of titles
+  // refresh list of titles
   refresh(): void {
     this.newsService.getTitles(this.pager.currentPage).subscribe(data => this.titles = data);
   }
 
-  //create pagination
+  // create pagination
   setPage(page: number, pageAmount: number) {
     if (page < 1 || page > this.pagesAmount) {
       return;
@@ -46,8 +46,8 @@ export class NewsTitlesComponent implements OnInit {
     this.pager = this.newsService.getPager(page, pageAmount);
     console.log(this.pager);
     this.newsService.getTitles(page).subscribe(data => this.titles = data);
-    
-    //get input field and set value for it
+
+    // get input field and set value for it
     const input: any = document.getElementById('input-page');
     console.log(input);
     input.value = page;
