@@ -1,6 +1,8 @@
 
 # GuardianNewsApp
 
+[![Build Status](https://travis-ci.org/makkaronis4e/Guardian-news-App.svg?branch=master)](https://travis-ci.org/makkaronis4e/Guardian-news-App)
+
 
 ## Development server
 
