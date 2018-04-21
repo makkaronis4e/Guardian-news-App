@@ -18,6 +18,7 @@ export class NewsTitlesComponent implements OnInit {
   article: Article;
   page: number;
   pagesAmount: number;
+  loading = true;
 
   // object returned by getPage
   pager: Pager;
@@ -26,15 +27,33 @@ export class NewsTitlesComponent implements OnInit {
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
-    this.newsService.getTitles().subscribe(data => {
-      this.pagesAmount = data[0].pages;
-      this.setPage(1, this.pagesAmount);
-    });
+    this.newsService.getTitles()
+      .subscribe(
+        data => {
+          this.pagesAmount = data[0].pages;
+          this.setPage(1, this.pagesAmount);
+        },
+        error => {
+          this.titles = error;
+          this.loading = false;
+        }
+      );
   }
 
   // refresh list of titles
   refresh(): void {
-    this.newsService.getTitles(this.pager.currentPage).subscribe(data => this.titles = data);
+    this.loading = true;
+    this.newsService.getTitles(this.pager.currentPage)
+      .subscribe(
+        data => {
+          this.loading = false;
+          this.titles = data;
+        },
+        error => {
+          this.titles = error;
+          this.loading = false;
+        }
+      );
   }
 
   // create pagination
@@ -42,14 +61,20 @@ export class NewsTitlesComponent implements OnInit {
     if (page < 1 || page > this.pagesAmount) {
       return;
     }
+    this.loading = true;
 
     this.pager = this.newsService.getPager(page, pageAmount);
     console.log(this.pager);
-    this.newsService.getTitles(page).subscribe(data => this.titles = data);
-
-    // get input field and set value for it
-    const input: any = document.getElementById('input-page');
-    console.log(input);
-    input.value = page;
+    this.newsService.getTitles(page)
+      .subscribe(
+        data => {
+          this.loading = false;
+          this.titles = data;
+        },
+        error => {
+          this.titles = error;
+          this.loading = false;
+        }
+      );
   }
 }

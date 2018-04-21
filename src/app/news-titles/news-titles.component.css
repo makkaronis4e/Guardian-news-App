@@ -20,15 +20,20 @@
 	top: 2px;
 }
 
-.button:hover img {
+.button:hover .img-refresh {
   transition-duration: 1s;
   transform: rotate(280deg);
 }
 
-img {
+.img-refresh {
   position:absolute;
   left: 35px;
   top: 4px;
+}
+
+.spinner {
+  width: 300px;
+  margin: auto;
 }
 
 ul {
@@ -78,7 +83,16 @@ ul > li > a {
   margin: auto;
   margin-top: 10px;
   font-size: 18px;
-  
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 input, textarea {
