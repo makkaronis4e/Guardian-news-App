@@ -1,45 +1,55 @@
 import { NgModule, Component, Injectable } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Http } from '@angular/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import { Title } from '../models/title';
 import { Article } from '../models/article';
+import { TitleResponse, ArticleResponse } from '../models/response';
 
 
 @Injectable()
 export class NewsService {
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   // send request to Guardian api for news titles
   getTitles(page: number = 2): Observable<Title[]> {
     const apiURL = `http://content.guardianapis.com/search?page=${page}&api-key=test`;
 
-    return this.http.get(apiURL).map(res => {
-      const rest = res.json().response;
-      const results = rest.results;
-      return results.map(function (title: any) {
+
+    return this.http.get<TitleResponse>(apiURL)
+      .map(res => {
+        const rest = res.response;
+        const results = rest.results;
         const pages = rest.pages;
-        return { name: title.webTitle, apiUrl: title.apiUrl, pages: pages };
-      });
-    });
+        return results.map(function (title: any) {
+          return { name: title.webTitle, apiUrl: title.apiUrl, pages: pages };
+        });
+      })
+      .catch(this.errorHandler);
+  }
+  errorHandler(error: HttpErrorResponse) {
+    return Observable.throw(error.message || "Server Error");
   }
 
   // send request to Guardian api for text of news
   getArticle(apiUrl: string): Observable<Article> {
     const url = apiUrl + '?show-blocks=body&api-key=test';
 
-    return this.http.get(url).map(res => {
-      const response = res.json().response.content;
-      const webUrl = response.webUrl;
-      const text = response.blocks.body[0].bodyTextSummary;
-      return { text: text, webUrl: webUrl };
-    });
+    return this.http.get<ArticleResponse>(url)
+      .map(res => {
+        const content = res.response.content;
+        const webUrl = content.webUrl;
+        const text = content.blocks.body[0].bodyTextSummary;
+        return { text: text, webUrl: webUrl };
+      });
   }
 
-   // create pagination
+  // create pagination
   getPager(currentPage: number, pageAmount: number) {
 
     // reduce number of pages and create array of page-numbers
