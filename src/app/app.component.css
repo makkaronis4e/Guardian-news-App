@@ -1,13 +1,13 @@
 header {
-    height:120px;
+    height: 120px;
     background-color: #b70b39;
 }
 
 .title {
     margin: auto;
-    width: 250px;
+    width: 290px;
     color: wheat;
-    font-size: 38px;
+    font-size: 36px;
     padding-top: 35px;
-
+    text-align: center;
 }
