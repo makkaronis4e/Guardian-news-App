@@ -19,6 +19,7 @@ export class NewsTitlesComponent implements OnInit {
   page: number;
   pagesAmount: number;
   loading = true;
+  image = "assets/img/reload.svg";
 
   // object returned by getPage
   pager: Pager;

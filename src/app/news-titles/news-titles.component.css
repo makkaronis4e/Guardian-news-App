@@ -11,13 +11,14 @@
 }
 
 .button:hover {
-  background: #d8e6e8;
+  background: #f8d697;
   text-decoration: none;
 }
 
 .button:active {
 	position: relative;
-	top: 2px;
+  top: 2px;
+  background: #d8e6e8;
 }
 
 .button:hover .img-refresh {
@@ -27,8 +28,8 @@
 
 .img-refresh {
   position:absolute;
-  left: 35px;
-  top: 4px;
+  left: 11px;
+  top: -20px;
 }
 
 .spinner {

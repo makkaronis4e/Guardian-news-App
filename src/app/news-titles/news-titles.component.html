@@ -1,6 +1,6 @@
 <div class="app-wrapper">
   <div class="button" (click)="refresh()">
-    <img class="img-refresh" src="http://www.myiconfinder.com/uploads/iconsets/128-128-76912453c14fc15ed016df244ce34b54.png" width="50" height="50"
+    <img class="img-refresh" [src]="image" width="100" height="100"
       alt="refresh" />
   </div>
   <div class="spinner" *ngIf="loading">
