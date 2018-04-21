@@ -18,6 +18,7 @@ export class NewsTitlesComponent implements OnInit {
   article: Article;
   page: number;
   pagesAmount: number;
+  loading = true;
 
   // object returned by getPage
   pager: Pager;
@@ -34,13 +35,25 @@ export class NewsTitlesComponent implements OnInit {
         },
         error => {
           this.titles = error;
+          this.loading = false;
         }
       );
   }
 
   // refresh list of titles
   refresh(): void {
-    this.newsService.getTitles(this.pager.currentPage).subscribe(data => this.titles = data);
+    this.loading = true;
+    this.newsService.getTitles(this.pager.currentPage)
+      .subscribe(
+        data => {
+          this.loading = false;
+          this.titles = data;
+        },
+        error => {
+          this.titles = error;
+          this.loading = false;
+        }
+      );
   }
 
   // create pagination
@@ -48,15 +61,19 @@ export class NewsTitlesComponent implements OnInit {
     if (page < 1 || page > this.pagesAmount) {
       return;
     }
-    console.log('1');
+    this.loading = true;
 
     this.pager = this.newsService.getPager(page, pageAmount);
     console.log(this.pager);
     this.newsService.getTitles(page)
       .subscribe(
-        data => this.titles = data,
+        data => {
+          this.loading = false;
+          this.titles = data;
+        },
         error => {
           this.titles = error;
+          this.loading = false;
         }
       );
   }

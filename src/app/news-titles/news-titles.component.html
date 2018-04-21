@@ -1,9 +1,12 @@
 <div class="app-wrapper">
   <div class="button" (click)="refresh()">
-    <img src="http://www.myiconfinder.com/uploads/iconsets/128-128-76912453c14fc15ed016df244ce34b54.png" width="50" height="50"
+    <img class="img-refresh" src="http://www.myiconfinder.com/uploads/iconsets/128-128-76912453c14fc15ed016df244ce34b54.png" width="50" height="50"
       alt="refresh" />
   </div>
-  <ul>
+  <div class="spinner" *ngIf="loading">
+      <img src="https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif" alt="loading" />
+  </div>
+  <ul *ngIf="!loading" >
     <app-news-block *ngFor="let title of titles" [title]=title></app-news-block>
   </ul>
   <div class="container">
