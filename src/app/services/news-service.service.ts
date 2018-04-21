@@ -20,20 +20,19 @@ export class NewsService {
   getTitles(page: number = 2): Observable<Title[]> {
     const apiURL = `http://content.guardianapis.com/search?page=${page}&api-key=test`;
 
-
     return this.http.get<TitleResponse>(apiURL)
       .map(res => {
         const rest = res.response;
         const results = rest.results;
         const pages = rest.pages;
-        return results.map(function (title: any) {
+        return results.map((title: any) => {
           return { name: title.webTitle, apiUrl: title.apiUrl, pages: pages };
         });
       })
       .catch(this.errorHandler);
   }
   errorHandler(error: HttpErrorResponse) {
-    return Observable.throw(error.message || "Server Error");
+    return Observable.throw([{ name: 'Sorry we couldn\'t find news for you. Try another page', apiUrl: null, pages: null }]);
   }
 
   // send request to Guardian api for text of news

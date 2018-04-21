@@ -35,15 +35,13 @@ export class NewsTitlesComponent implements OnInit {
         },
         error => {
           this.errorMsg = error;
-          console.log('---1111--', error);
         }
-      )
+      );
   }
 
   // refresh list of titles
   refresh(): void {
     this.newsService.getTitles(this.pager.currentPage).subscribe(data => this.titles = data);
-    console.log('-----', this.errorMsg);
   }
 
   // create pagination
@@ -54,7 +52,13 @@ export class NewsTitlesComponent implements OnInit {
 
     this.pager = this.newsService.getPager(page, pageAmount);
     console.log(this.pager);
-    this.newsService.getTitles(page).subscribe(data => this.titles = data);
+    this.newsService.getTitles(page)
+      .subscribe(
+        data => this.titles = data,
+        error => {
+          this.titles = error;
+        }
+      );
 
     // get input field and set value for it
     const input: any = document.getElementById('input-page');

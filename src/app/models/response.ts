@@ -1,7 +1,8 @@
 export interface TitleResponse {
   response: {
     pages: number;
-    results: any[]  };
+    results: any[]
+  };
 }
 
 export interface ArticleResponse {
@@ -11,8 +12,6 @@ export interface ArticleResponse {
       blocks: {
         body: any[];
       };
-      
     };
-  }
-  
+  };
 }
