@@ -3,11 +3,26 @@ header {
     background-color: #b70b39;
 }
 
-.title {
+div {
+    max-width: 1250px;
+    position: relative;
+    margin: auto;
+    height: 120px;
+}
+
+h2 {
     margin: auto;
     width: 290px;
     color: wheat;
     font-size: 36px;
-    padding-top: 35px;
+    padding-top: 39px;
     text-align: center;
+}
+
+a {
+    display: block;
+    position: absolute;
+    top: 10px;
+    width: 100px;
+    height: 100px;
 }

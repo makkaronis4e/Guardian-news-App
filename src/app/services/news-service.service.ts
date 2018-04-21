@@ -18,7 +18,7 @@ export class NewsService {
 
   // send request to Guardian api for news titles
   getTitles(page: number = 2): Observable<Title[]> {
-    const apiURL = `http://content.guardianapis.com/search?page=${page}&api-key=test`;
+    const apiURL = `https://content.guardianapis.com/search?page=${page}&api-key=test`;
 
     return this.http.get<TitleResponse>(apiURL)
       .map(res => {
