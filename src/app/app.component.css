@@ -1,10 +1,15 @@
+body {
+    margin:0;
+}
+
 header {
     height: 120px;
     background-color: #b70b39;
+    width: 100%;
 }
 
-div {
-    max-width: 1250px;
+.title {
+    width: 70%;
     position: relative;
     margin: auto;
     height: 120px;
@@ -12,7 +17,7 @@ div {
 
 h2 {
     margin: auto;
-    width: 290px;
+    width: 70%;
     color: wheat;
     font-size: 36px;
     padding-top: 39px;
@@ -20,9 +25,27 @@ h2 {
 }
 
 a {
-    display: block;
-    position: absolute;
-    top: 10px;
-    width: 100px;
-    height: 100px;
+    float: left;
+    margin-top: 10px;
 }
+
+img {
+    width: 100px;
+    height: 100px  
+}
+
+@media screen and (max-width: 600px) {
+    h2 {
+        font-size: 26px;
+        margin-right: 10px;
+
+    }
+
+    .title {
+        width: 95%;
+        position: relative;
+        margin: auto;
+        height: 120px;
+    }
+    
+  }

@@ -1,3 +1,7 @@
+.app-wrapper {
+  width: 100%;
+}
+
 .button {
   position: relative;
   height: 60px;
@@ -43,13 +47,14 @@
 }
 
 ul {
+  width: 80%;
   list-style: none;
   perspective: 900;
   padding: 0;
-  margin: 0;
+  margin: auto;
 }
 .container {
-  width: 600px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -108,4 +113,11 @@ input, textarea {
   font-size: 18px;
   background-color: #fefffa;
   font-family: 'Times New Roman', Times, serif;
+}
+
+
+@media screen and (max-width: 600px) {
+  .page-button {
+    display: none !important;
+  }
 }
