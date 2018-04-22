@@ -129,3 +129,13 @@
       transform: rotateX(0deg);
     }
   }
+
+  @media screen and (max-width: 600px) {
+    .block {
+      font-size: 12px;
+    }
+
+    h2 {
+      font-size: 14px;
+    }
+  }
