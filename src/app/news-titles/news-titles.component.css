@@ -85,7 +85,7 @@ ul > li > a {
 }
 
 .input {
-  width: 220px;
+  width: 250px;
   margin: auto;
   margin-top: 10px;
   font-size: 18px;
@@ -107,5 +107,5 @@ input, textarea {
   height: 28px;
   font-size: 18px;
   background-color: #fefffa;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', Times, serif;
 }
