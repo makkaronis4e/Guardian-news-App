@@ -53,6 +53,7 @@ ul {
   padding: 0;
   margin: auto;
 }
+
 .container {
   width: 100%;
   margin: 0 auto;
@@ -119,5 +120,9 @@ input, textarea {
 @media screen and (max-width: 600px) {
   .page-button {
     display: none !important;
+  }
+
+  ul {
+    width: 100%;
   }
 }

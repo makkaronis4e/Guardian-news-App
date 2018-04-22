@@ -132,10 +132,10 @@
 
   @media screen and (max-width: 600px) {
     .block {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     h2 {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
