@@ -32,6 +32,11 @@
   top: -20px;
 }
 
+.disabled a {
+  pointer-events:none; 
+  opacity:0.6;
+}
+
 .spinner {
   width: 300px;
   margin: auto;
